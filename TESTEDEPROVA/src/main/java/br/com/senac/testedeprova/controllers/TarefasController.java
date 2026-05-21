@@ -1,5 +1,6 @@
 package br.com.senac.testedeprova.controllers;
 
+import br.com.senac.testedeprova.dtos.TarefasFiltroDto;
 import br.com.senac.testedeprova.dtos.TarefasRequestDto;
 import br.com.senac.testedeprova.entidades.Tarefas;
 import br.com.senac.testedeprova.services.TarefaService;
@@ -20,7 +21,7 @@ public class TarefasController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Tarefas>> listar(TarefasRequestDto filtro) {
+    public ResponseEntity<List<Tarefas>> listar(TarefasFiltroDto filtro) {
         return ResponseEntity
                 .ok(tarefaService.listar(filtro));
     }

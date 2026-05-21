@@ -1,5 +1,6 @@
 package br.com.senac.testedeprova.services;
 
+import br.com.senac.testedeprova.dtos.TarefasFiltroDto;
 import br.com.senac.testedeprova.dtos.TarefasRequestDto;
 import br.com.senac.testedeprova.entidades.Tarefas;
 import br.com.senac.testedeprova.repositorios.TarefasRepositorio;
@@ -16,7 +17,7 @@ public class TarefaService {
         this.tarefasRepositorio = tarefasRepositorio;
     }
 
-    public List<Tarefas> listar(@org.checkerframework.checker.nullness.qual.MonotonicNonNull TarefasRequestDto filtro) {
+    public List<Tarefas> listar(TarefasFiltroDto filtro) {
         if(filtro.getNome() != null) {
             return tarefasRepositorio.findByNome(filtro.getNome());
         }
