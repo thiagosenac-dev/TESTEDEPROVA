@@ -4,10 +4,12 @@ import br.com.senac.testedeprova.dtos.TarefasFiltroDto;
 import br.com.senac.testedeprova.dtos.TarefasRequestDto;
 import br.com.senac.testedeprova.entidades.Tarefas;
 import br.com.senac.testedeprova.repositorios.TarefasRepositorio;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TarefaService {
 
 
@@ -19,7 +21,7 @@ public class TarefaService {
 
     public List<Tarefas> listar(TarefasFiltroDto filtro) {
         if(filtro.getNome() != null) {
-            return tarefasRepositorio.findByNome(filtro.getNome());
+            return tarefasRepositorio.findByNomeContaining(filtro.getNome());
         }
 
         if(filtro.getAutor() != null) {
@@ -27,11 +29,11 @@ public class TarefaService {
         }
 
         if(filtro.getDataInicio() != null) {
-            return tarefasRepositorio.findByAutor(filtro.getDataInicio());
+            return tarefasRepositorio.findByDataInicioGreaterThan(filtro.getDataInicio());
         }
 
         if(filtro.getDataFim() != null) {
-            return tarefasRepositorio.findByAutor(filtro.getDataFim());
+            return tarefasRepositorio.findByDataFim(filtro.getDataFim());
         }
         return tarefasRepositorio.findAll();
     }

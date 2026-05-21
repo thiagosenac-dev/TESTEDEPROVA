@@ -1,9 +1,8 @@
 package br.com.senac.testedeprova.entidades;
-
 import jakarta.persistence.*;
-
 import java.util.List;
 
+@Entity
 public class Tarefas {
 
 
@@ -23,9 +22,6 @@ public class Tarefas {
 
     @Column(nullable = false)
     private String autor;
-
-    @OneToMany(mappedBy = "tarefa")
-    private List<Tarefas> tarefas;
 
     public Long getId() {
         return id;
@@ -73,13 +69,5 @@ public class Tarefas {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public List<Tarefas> getTarefas() {
-        return tarefas;
-    }
-
-    public void setTarefas(List<Tarefas> tarefas) {
-        this.tarefas = tarefas;
     }
 }
