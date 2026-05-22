@@ -24,36 +24,29 @@ public class TarefaService {
             return tarefasRepositorio.findByNomeContaining(filtro.getNome());
         }
 
-        if(filtro.getAutor() != null) {
-            return tarefasRepositorio.findByAutor(filtro.getAutor());
-        }
-
         if(filtro.getDataInicio() != null) {
             return tarefasRepositorio.findByDataInicioGreaterThan(filtro.getDataInicio());
         }
 
-        if(filtro.getDataFim() != null) {
-            return tarefasRepositorio.findByDataFim(filtro.getDataFim());
-        }
         return tarefasRepositorio.findAll();
     }
 
-    public Tarefas criar(TarefasRequestDto cliente) {
-        Tarefas clientePersist =
-                this.tarefasResquestDtoParaTarefas(cliente);
+    public Tarefas criar(TarefasRequestDto tarefa) {
+        Tarefas tarefaPersist =
+                this.tarefasResquestDtoParaTarefas(tarefa);
 
-        return tarefasRepositorio.save(clientePersist);
+        return tarefasRepositorio.save(tarefaPersist);
     }
 
     public Tarefas atualizar(
             Long id,
-            TarefasRequestDto cliente) {
+            TarefasRequestDto tarefa) {
         if(tarefasRepositorio.existsById(id)) {
-            Tarefas clientePersist =
-                    this.tarefasResquestDtoParaTarefas(cliente);
-            clientePersist.setId(id);
+            Tarefas tarefaPersist =
+                    this.tarefasResquestDtoParaTarefas(tarefa);
+            tarefaPersist.setId(id);
 
-            return tarefasRepositorio.save(clientePersist);
+            return tarefasRepositorio.save(tarefaPersist);
         }
 
         throw new RuntimeException("Cliente não encontrado");

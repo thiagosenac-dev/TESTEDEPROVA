@@ -3,8 +3,6 @@ package br.com.senac.testedeprova.dtos;
 public class TarefasFiltroDto {
     private String nome;
     private String dataInicio;
-    private String dataFim;
-    private String autor;
 
     public String getNome() {
         return nome;
@@ -20,21 +18,5 @@ public class TarefasFiltroDto {
 
     public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
-    }
-
-    public String getDataFim() {
-        return dataFim;
-    }
-
-    public void setDataFim(String dataFim) {
-        this.dataFim = dataFim;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
     }
 }
